@@ -2,7 +2,7 @@ const { Schema } = require("mongoose");
 
 const TimeSchema = new Schema(
   {
-    date: Date,
+    date: String,
     improveTime: {
       study: String,
       workout: String,

@@ -1,14 +1,13 @@
 const { Schema } = require("mongoose");
+const { Time } = require("../index");
 
 const UserSchema = new Schema(
   {
     userId: String,
-    timeData: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Time",
-      },
-    ],
+    timeData: {
+      type: Object,
+      ref: "Time",
+    },
   },
   {
     timestamps: true,
