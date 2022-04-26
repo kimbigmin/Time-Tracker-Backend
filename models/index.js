@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const TimeSchema = require("./schemas/time");
 const UserSchema = require("./schemas/user");
 

@@ -1,7 +1,15 @@
 const { Schema } = require("mongoose");
+const shortId = require("./types/short-id");
 
 const TimeSchema = new Schema(
   {
+    shortId,
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+      index: true,
+    },
     date: String,
     improveTime: {
       study: String,

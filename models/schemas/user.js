@@ -1,12 +1,20 @@
 const { Schema } = require("mongoose");
-const { Time } = require("../index");
+const shortId = require("./types/short-id");
 
 const UserSchema = new Schema(
   {
-    userId: String,
-    timeData: {
-      type: Object,
-      ref: "Time",
+    shortId,
+    email: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
     },
   },
   {

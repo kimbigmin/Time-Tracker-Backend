@@ -1,9 +1,15 @@
-var express = require("express");
-var router = express.Router();
+const { Router } = require("express");
+const { Time, User } = require("../models");
+const asyncHandler = require("../utils/async-handler");
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
-  res.json({ hi: 123 });
-});
+const router = Router();
+
+router.get(
+  "/:shortId",
+  asyncHandler(async (req, res) => {
+    const { shortId } = req.params;
+    const post = await Time.findOne({ shortId }).populate("author");
+  })
+);
 
 module.exports = router;
