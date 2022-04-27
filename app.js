@@ -6,11 +6,13 @@ const logger = require("morgan");
 const MongoClient = require("mongodb").MongoClient;
 const mongoose = require("mongoose");
 const { Time } = require("./models");
-
+const authRouter = require("./routes/auth");
 const timeRouter = require("./routes/time");
 const usersRouter = require("./routes/users");
+const passport = require("passport");
 
 const app = express();
+require("./passport")();
 
 mongoose.connect(
   "mongodb+srv://kimmingyu:%40aa19465369a@cluster0.umc0e.mongodb.net/test"
@@ -19,8 +21,6 @@ mongoose.connect(
 mongoose.connection.on("connected", () => {
   console.log("Successfully connected to MongoDB");
 });
-
-app.listen(8080);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -32,8 +32,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(passport.initialize());
+
 app.use("/time", timeRouter);
 app.use("/users", usersRouter);
+app.use("/auth", authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

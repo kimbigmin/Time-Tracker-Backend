@@ -1,7 +1,8 @@
-var express = require("express");
-var router = express.Router();
+const { Router } = require("express");
 const { User, Time } = require("../models");
+const asyncHandler = require("../utils/async-handler");
 
+const router = Router();
 /* GET users listing. */
 router.get("/test", function (req, res, next) {
   const post = Time.create();
