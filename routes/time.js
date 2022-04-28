@@ -12,4 +12,12 @@ router.get(
   })
 );
 
+router.post(
+  "/",
+  asyncHandler(async (req, res) => {
+    const author = await User.findOne({ shortId: req.user.shortId });
+    console.log(author);
+  })
+);
+
 module.exports = router;
