@@ -14,7 +14,6 @@ const cors = require("cors");
 const getUserFromJWT = require("./middlewares/get-user-from-jwt");
 
 const app = express();
-require("./passport")();
 
 mongoose.connect(
   "mongodb+srv://kimmingyu:%40aa19465369a@cluster0.umc0e.mongodb.net/test"
@@ -23,6 +22,9 @@ mongoose.connect(
 mongoose.connection.on("connected", () => {
   console.log("Successfully connected to MongoDB");
 });
+
+require("./passport")();
+require("dotenv").config();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
