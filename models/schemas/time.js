@@ -11,7 +11,7 @@ const TimeSchema = new Schema(
       index: true,
     },
     date: String,
-    improveTime: {
+    improve: {
       study: String,
       workout: String,
       reading: String,
