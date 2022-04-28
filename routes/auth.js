@@ -21,10 +21,4 @@ router.get(
   }
 );
 
-router.delete("/logout", (req, res) => {
-  res.cookie("token", null, {
-    maxAge: 0,
-  });
-});
-
 module.exports = router;
