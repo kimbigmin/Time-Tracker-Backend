@@ -31,8 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 let corsOptions = {
-  origin:
-    "http://http://ec2-13-209-40-220.ap-northeast-2.compute.amazonaws.com/",
+  origin: process.env.CLIENT_URL,
   credentials: true,
 };
 app.use(cors(corsOptions));

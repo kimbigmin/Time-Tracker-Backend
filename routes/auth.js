@@ -18,7 +18,7 @@ router.get(
   (req, res, next) => {
     // userToken 설정하기
     setUserToken(res, req.user); // jwt
-    res.redirect("http://localhost:3001");
+    res.redirect(process.env.CLIENT_URL);
   }
 );
 
