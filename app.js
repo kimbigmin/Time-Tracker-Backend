@@ -34,6 +34,13 @@ let corsOptions = {
   origin: process.env.CLIENT_URL,
   credentials: true,
 };
+
+app.get("/tests", (req, res) => {
+  res.json({
+    dfd: "dfd",
+  });
+});
+
 app.use(cors(corsOptions));
 
 app.use(passport.initialize());
