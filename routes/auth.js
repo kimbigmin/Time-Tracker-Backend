@@ -12,7 +12,7 @@ router.get(
   })
 );
 
-router.post(
+router.get(
   "/google/callback",
   passport.authenticate("google", { session: false }),
   (req, res, next) => {
