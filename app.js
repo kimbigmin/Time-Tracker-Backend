@@ -12,8 +12,6 @@ const getUserFromJWT = require("./middlewares/get-user-from-jwt");
 
 const app = express();
 
-console.log("Test!!");
-
 mongoose.connect(
   "mongodb+srv://kimmingyu:%40aa19465369a@cluster0.umc0e.mongodb.net/test"
 );
