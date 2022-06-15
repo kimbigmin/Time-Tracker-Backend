@@ -33,7 +33,7 @@ let corsOptions = {
   credentials: true,
 };
 
-app.get("/tests", (req, res) => {
+app.get("/", (req, res) => {
   res.json({
     dfd: "dfd",
   });
