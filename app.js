@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 let corsOptions = {
-  origin: process.env.CLIENT_URL,
+  origin: "https://d3vlj3j3xnrtwg.cloudfront.net",
   credentials: true,
 };
 
