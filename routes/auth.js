@@ -16,8 +16,6 @@ router.get(
   "/google/callback",
   passport.authenticate("google", {
     session: false,
-    callbackURL:
-      "http://ec2-52-78-39-53.ap-northeast-2.compute.amazonaws.com/api/auth/google/callback",
   }),
   (req, res, next) => {
     // userToken 설정하기
