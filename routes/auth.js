@@ -19,8 +19,8 @@ router.get(
   }),
   (req, res, next) => {
     // userToken 설정하기
-    setUserToken(res, req.user); // jwt
     console.log("Succeese!!!!");
+    setUserToken(res, req.user); // jwt
     res.redirect("https://d3vlj3j3xnrtwg.cloudfront.net");
   }
 );
