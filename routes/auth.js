@@ -9,6 +9,8 @@ router.get(
   "/google",
   passport.authenticate("google", {
     scope: ["profile", "email"],
+    callbackURL:
+      "http://ec2-52-78-39-53.ap-northeast-2.compute.amazonaws.com/api/auth/google/callback",
   })
 );
 
