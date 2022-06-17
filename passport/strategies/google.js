@@ -6,7 +6,7 @@ const config = {
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL:
-    "http://ec2-52-78-39-53.ap-northeast-2.compute.amazonaws.com/auth/google/callback",
+    "http://ec2-52-78-39-53.ap-northeast-2.compute.amazonaws.com/api/auth/google/callback",
 };
 
 async function findOrCreateUser({ name, email }) {
