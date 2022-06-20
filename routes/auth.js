@@ -13,6 +13,17 @@ router.get(
 );
 
 router.get(
+  "/google/undefined",
+  passport.authenticate("google", {
+    session: false,
+  }),
+  (req, res, next) => {
+    console.log("Succeese???");
+    res.redirect("https://time-trackers.com");
+  }
+);
+
+router.get(
   "/google/callback",
   passport.authenticate("google", {
     session: false,
@@ -21,7 +32,7 @@ router.get(
     // userToken 설정하기
     console.log("Succeese!!!!");
     setUserToken(res, req.user); // jwt
-    res.redirect("https://d3vlj3j3xnrtwg.cloudfront.net");
+    res.redirect("https://time-trackers.com");
   }
 );
 

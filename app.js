@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 let corsOptions = {
-  origin: "https://d3vlj3j3xnrtwg.cloudfront.net",
+  origin: "https://time-trackers.com",
   credentials: true,
 };
 
