@@ -6,6 +6,7 @@ const config = {
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL: "https://a.time-trackers.com/auth/google/callback",
+  state: true,
 };
 
 async function findOrCreateUser({ name, email }) {
