@@ -9,24 +9,19 @@ router.get(
   "/google",
   passport.authenticate("google", {
     scope: ["profile", "email"],
+    successRedirect: "https://time-trackers.com",
+    failureRedirect: "/",
+    failureFlash: true,
   })
-);
-
-router.get(
-  "/google/undefined",
-  passport.authenticate("google", {
-    session: false,
-  }),
-  (req, res, next) => {
-    console.log("Succeese???");
-    res.redirect("https://time-trackers.com");
-  }
 );
 
 router.get(
   "/google/callback",
   passport.authenticate("google", {
     session: false,
+    successRedirect: "https://time-trackers.com",
+    failureRedirect: "/",
+    failureFlash: true,
   }),
   (req, res, next) => {
     // userToken 설정하기
