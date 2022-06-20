@@ -9,9 +9,6 @@ router.get(
   "/google",
   passport.authenticate("google", {
     scope: ["profile", "email"],
-    successRedirect: "https://time-trackers.com",
-    failureRedirect: "/",
-    failureFlash: true,
   })
 );
 
