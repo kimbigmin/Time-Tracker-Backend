@@ -35,6 +35,9 @@ let corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+app.set("trust proxy", 1);
+
 app.use(
   session({
     secret: "secretcode",
