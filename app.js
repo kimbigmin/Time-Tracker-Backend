@@ -53,12 +53,12 @@ app.use(passport.session());
 
 passport.serializeUser((user, done) => {
   console.log("serial?@@@@", user);
-  return done(null, user.shortId);
+  return done(null, user);
 });
 
 passport.deserializeUser((user, done) => {
   console.log("deserial?@@@@", user);
-  return done(null, user.shortId);
+  return done(null, user);
 });
 
 app.get("/getuser", (req, res) => {
