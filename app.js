@@ -17,9 +17,16 @@ mongoose.connect(
   "mongodb+srv://kimmingyu:%40aa19465369a@cluster0.umc0e.mongodb.net/test"
 );
 
-mongoose.connection.on("connected", () => {
-  console.log("Successfully connected to MongoDB");
-});
+mongoose.connection.on(
+  "connected",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => {
+    console.log("Successfully connected to MongoDB");
+  }
+);
 
 require("./passport")();
 require("dotenv").config();
@@ -27,7 +34,6 @@ require("dotenv").config();
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser("secretcode"));
 
 let corsOptions = {
   origin: "https://time-trackers.com",
