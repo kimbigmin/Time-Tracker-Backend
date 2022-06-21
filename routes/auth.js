@@ -32,7 +32,7 @@ router.get(
 //   })
 // );
 
-app.get("/logout", (req, res) => {
+router.get("/logout", (req, res) => {
   if (req.user) {
     req.logout();
     res.send("done");
