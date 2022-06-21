@@ -24,12 +24,19 @@ router.get(
   }
 );
 
-router.get(
-  "/logout",
-  asyncHandler(async (req, res) => {
-    res.clearCookie("token");
-    res.redirect("/");
-  })
-);
+// router.get(
+//   "/logout",
+//   asyncHandler(async (req, res) => {
+//     res.clearCookie("token");
+//     res.redirect("/");
+//   })
+// );
+
+app.get("/logout", (req, res) => {
+  if (req.user) {
+    req.logout();
+    res.send("done");
+  }
+});
 
 module.exports = router;
