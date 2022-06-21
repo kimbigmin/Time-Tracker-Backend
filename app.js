@@ -53,7 +53,7 @@ app.use(passport.session());
 
 passport.serializeUser((user, done) => {
   console.log("serial?@@@@", user);
-  return done(null, user.shortId);
+  return done(null, user._id);
 });
 
 passport.deserializeUser((id, done) => {
@@ -66,7 +66,7 @@ passport.deserializeUser((id, done) => {
 app.get("/getuser", (req, res) => {
   // res.send(req.user);
   console.log("-----------@@@@@@@ 확인용 @@@@@@@@@--------", req.cookies);
-  console.log("-----------@@@@@@@ 확인용 @@@@@@@@@--------", req);
+  console.log("-----------@@@@@@@ 확인용 @@@@@@@@@--------", req.user);
   res.send(req.user);
 });
 
