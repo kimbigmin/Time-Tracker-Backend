@@ -53,7 +53,7 @@ app.use(passport.session());
 
 passport.serializeUser((user, done) => {
   console.log("serial?@@@@", user._id);
-  return done(null, user);
+  return done(null, user._id);
 });
 
 passport.deserializeUser((id, done) => {
