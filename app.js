@@ -53,11 +53,12 @@ app.use(passport.session());
 
 passport.serializeUser((user, done) => {
   console.log("serial?@@@@", user);
-  return done(null, user._id);
+  return done(null, user);
 });
 
-passport.deserializeUser((id, done) => {
-  User.findById(id, (err, doc) => {
+passport.deserializeUser((user, done) => {
+  console.log(user);
+  User.findById(user, (err, doc) => {
     // Whatever we return goes to the client and binds to the req.user property
     return done(null, doc);
   });
