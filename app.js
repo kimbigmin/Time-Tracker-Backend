@@ -9,6 +9,7 @@ const usersRouter = require("./routes/users");
 const passport = require("passport");
 const cors = require("cors");
 const getUserFromJWT = require("./middlewares/get-user-from-jwt");
+const session = require("express-session");
 
 const app = express();
 
