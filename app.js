@@ -63,6 +63,7 @@ passport.deserializeUser((user, done) => {
 
 app.get("/getuser", (req, res) => {
   // res.send(req.user);
+  console.log(req);
   res.send(req.user);
 });
 
