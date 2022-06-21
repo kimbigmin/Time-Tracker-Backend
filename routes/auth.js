@@ -20,7 +20,6 @@ router.get(
   async (req, res, next) => {
     // userToken 설정하기
     console.log("Succeese!!!!");
-    setUserToken(res, req.user); // jwt
     res.redirect("https://time-trackers.com/main");
   }
 );
