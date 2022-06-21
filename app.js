@@ -10,7 +10,7 @@ const passport = require("passport");
 const cors = require("cors");
 const getUserFromJWT = require("./middlewares/get-user-from-jwt");
 const session = require("express-session");
-
+const { User } = require("../../models");
 const app = express();
 
 mongoose.connect(
@@ -53,19 +53,21 @@ app.use(passport.session());
 
 passport.serializeUser((user, done) => {
   console.log("serial?@@@@", user);
-  return done(null, user);
+  return done(null, user.shortId);
 });
 
-passport.deserializeUser((user, done) => {
-  console.log("deserial?@@@@", user);
-  return done(null, user);
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, doc) => {
+    // Whatever we return goes to the client and binds to the req.user property
+    return done(null, doc);
+  });
 });
 
 app.get("/getuser", (req, res) => {
   // res.send(req.user);
   console.log("-----------@@@@@@@ 확인용 @@@@@@@@@--------", req.cookies);
   console.log("-----------@@@@@@@ 확인용 @@@@@@@@@--------", req);
-  res.send(req.cookies);
+  res.send(req.user);
 });
 
 app.use("/auth", authRouter);
