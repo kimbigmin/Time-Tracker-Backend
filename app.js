@@ -65,16 +65,16 @@ passport.deserializeUser((id, done) => {
   });
 });
 
+app.use("/auth", authRouter);
+app.use("/users", usersRouter);
+app.use("/time", timeRouter);
+
 app.get("/getuser", (req, res) => {
   // res.send(req.user);
   console.log("-----------@@@@@@@ 확인용 @@@@@@@@@--------", req.session);
   console.log("-----------@@@@@@@ 확인용 @@@@@@@@@--------", req.user);
   res.send(req.user);
 });
-
-app.use("/auth", authRouter);
-app.use("/users", usersRouter);
-app.use("/time", timeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
