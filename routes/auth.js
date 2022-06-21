@@ -20,7 +20,7 @@ router.get(
   async (req, res, next) => {
     // userToken 설정하기
     console.log("Succeese!!!!");
-    res.redirect("https://time-trackers.com/main");
+    res.redirect("https://time-trackers.com");
   }
 );
 
