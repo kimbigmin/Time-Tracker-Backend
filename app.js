@@ -52,13 +52,14 @@ app.use(passport.session());
 // app.use(getUserFromJWT);
 
 passport.serializeUser((user, done) => {
-  console.log("serial?@@@@", user);
+  console.log("serial?@@@@", user._id);
   return done(null, user);
 });
 
-passport.deserializeUser((user, done) => {
-  console.log("deserial?@!!!@@@", user);
-  return done(null, user);
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, doc) => {
+    return done(null, doc);
+  });
 });
 
 app.get("/getuser", (req, res) => {
