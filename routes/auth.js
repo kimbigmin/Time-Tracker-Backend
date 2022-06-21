@@ -35,7 +35,7 @@ router.get(
 router.get("/logout", (req, res) => {
   if (req.user) {
     req.logout();
-    res.send("done");
+    res.redirect("https://time-trackers.com");
   }
 });
 
