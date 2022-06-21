@@ -30,11 +30,7 @@ module.exports = new GoogleStrategy(
     const { email, name } = profile._json;
     try {
       const user = await findOrCreateUser({ email, name });
-      done(null, {
-        shortId: user.shortId,
-        email: user.email,
-        name: user.name,
-      });
+      done(null, user);
       console.log("strategy User@@@@@@@", user);
     } catch (e) {
       done(e, null);
