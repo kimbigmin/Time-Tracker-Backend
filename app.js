@@ -9,6 +9,7 @@ const usersRouter = require("./routes/users");
 const passport = require("passport");
 const cors = require("cors");
 const getUserFromJWT = require("./middlewares/get-user-from-jwt");
+const { session } = require("passport");
 
 const app = express();
 
@@ -34,9 +35,16 @@ let corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
+app.use(
+  session({
+    secret: "secretcode",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 app.use(passport.initialize());
-app.use(getUserFromJWT);
+app.use(passport.session());
+// app.use(getUserFromJWT);
 
 passport.serializeUser((user, done) => {
   return done(null, user);
@@ -48,7 +56,7 @@ passport.deserializeUser((user, done) => {
 
 app.get("/getuser", (req, res) => {
   // res.send(req.user);
-  setUserToken(res, req.user); // jwt
+  res.send(req.user);
 });
 
 app.use("/auth", authRouter);
