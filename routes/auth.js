@@ -14,7 +14,10 @@ router.get(
 
 router.get(
   "/google/callback",
-  passport.authenticate("google"),
+  passport.authenticate("google", {
+    failureRedirect: "https://time-trackers.com",
+    session: true,
+  }),
   async (req, res, next) => {
     // userToken 설정하기
     console.log("Succeese!!!!");
