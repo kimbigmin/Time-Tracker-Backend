@@ -6,5 +6,5 @@ exports.secret = secret;
 
 exports.setUserToken = (res, user) => {
   const token = jwt.sign(user, secret);
-  return res.json({ token: token });
+  res.send(token);
 };

@@ -33,16 +33,23 @@ let corsOptions = {
   credentials: true,
 };
 
-app.get("/zz", (req, res) => {
-  res.json({
-    dfd: "dfd",
-  });
-});
-
 app.use(cors(corsOptions));
 
 app.use(passport.initialize());
 app.use(getUserFromJWT);
+
+passport.serializeUser((user, done) => {
+  return done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  return done(null, user);
+});
+
+app.get("/getuser", (req, res) => {
+  // res.send(req.user);
+  setUserToken(res, req.user); // jwt
+});
 
 app.use("/auth", authRouter);
 app.use("/users", usersRouter);
