@@ -10,7 +10,7 @@ const passport = require("passport");
 const cors = require("cors");
 const getUserFromJWT = require("./middlewares/get-user-from-jwt");
 const session = require("express-session");
-const { User } = require("../../models");
+const { User } = require("./models");
 const app = express();
 
 mongoose.connect(
