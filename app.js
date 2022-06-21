@@ -64,7 +64,7 @@ passport.deserializeUser((user, done) => {
 app.get("/getuser", (req, res) => {
   // res.send(req.user);
   console.log("-----------@@@@@@@ 확인용 @@@@@@@@@--------", req.cookies);
-  res.send(req.user);
+  res.send(req.cookies);
 });
 
 app.use("/auth", authRouter);
