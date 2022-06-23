@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const passport = require("passport");
-const asyncHandler = require("../utils/async-handler");
-const { setUserToken } = require("../utils/jwt");
+// const asyncHandler = require("../utils/async-handler");
+// const { setUserToken } = require("../utils/jwt");
 
 const router = Router();
 
@@ -23,14 +23,6 @@ router.get(
     res.redirect("https://time-trackers.com");
   }
 );
-
-// router.get(
-//   "/logout",
-//   asyncHandler(async (req, res) => {
-//     res.clearCookie("token");
-//     res.redirect("/");
-//   })
-// );
 
 router.get("/logout", (req, res) => {
   if (req.user) {

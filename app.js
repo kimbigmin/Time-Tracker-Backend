@@ -8,13 +8,13 @@ const timeRouter = require("./routes/time");
 const usersRouter = require("./routes/users");
 const passport = require("passport");
 const cors = require("cors");
-const getUserFromJWT = require("./middlewares/get-user-from-jwt");
+// const getUserFromJWT = require("./middlewares/get-user-from-jwt");
 const session = require("express-session");
 const { User } = require("./models");
 const app = express();
 
 mongoose.connect(
-  "mongodb+srv://kimmingyu:%40aa19465369a@cluster0.umc0e.mongodb.net/test",
+  `mongodb+srv://${process.env.MONGODB_ID}:${process.env.MONGODB_PASSWORD}@cluster0.umc0e.mongodb.net/test`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -47,11 +47,6 @@ app.use(
     secret: "secretcode",
     resave: true,
     saveUninitialized: true,
-    // cookie: {
-    //   sameSite: "none",
-    //   secure: true,
-    //   maxAge: 1000 * 60 * 60 * 24 * 7, // One Week
-    // },
   })
 );
 app.use(passport.initialize());
@@ -59,7 +54,6 @@ app.use(passport.session());
 // app.use(getUserFromJWT);
 
 passport.serializeUser((user, done) => {
-  console.log("serial?@@@@", user._id);
   return done(null, user._id);
 });
 
@@ -74,9 +68,6 @@ app.use("/users", usersRouter);
 app.use("/time", timeRouter);
 
 app.get("/getuser", (req, res) => {
-  // res.send(req.user);
-  console.log("-----------@@@@@@@ 확인용 @@@@@@@@@--------", req.session);
-  console.log("-----------@@@@@@@ 확인용 @@@@@@@@@--------", req.user);
   res.send(req.user);
 });
 
