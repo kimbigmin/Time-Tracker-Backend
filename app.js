@@ -5,7 +5,6 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const authRouter = require("./routes/auth");
 const timeRouter = require("./routes/time");
-const usersRouter = require("./routes/users");
 const passport = require("passport");
 const cors = require("cors");
 // const getUserFromJWT = require("./middlewares/get-user-from-jwt");
@@ -64,7 +63,6 @@ passport.deserializeUser((id, done) => {
 });
 
 app.use("/auth", authRouter);
-app.use("/users", usersRouter);
 app.use("/time", timeRouter);
 
 app.get("/getuser", (req, res) => {
