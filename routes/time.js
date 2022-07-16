@@ -10,7 +10,6 @@ router.get(
   asyncHandler(async (req, res) => {
     const author = await User.findOne({ shortId: req.user.shortId });
     const allTime = await Time.find({ author: author._id });
-    console.log(allTime);
     res.json(allTime);
   })
 );

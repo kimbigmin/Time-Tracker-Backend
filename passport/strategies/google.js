@@ -26,12 +26,10 @@ async function findOrCreateUser({ name, email }) {
 module.exports = new GoogleStrategy(
   config,
   async (accessToken, refreshToken, profile, done) => {
-    console.log("starardsfdsfdsfdsf", profile);
     const { email, name } = profile._json;
     try {
       const user = await findOrCreateUser({ email, name });
       done(null, user);
-      console.log("strategy User@@@@@@@", user);
     } catch (e) {
       done(e, null);
     }

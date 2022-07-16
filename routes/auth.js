@@ -15,12 +15,12 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "https://time-trackers.com",
+    failureRedirect: process.env.CLIENT_URL,
     session: true,
   }),
   async (req, res, next) => {
     // userToken 설정하기
-    res.redirect("https://time-trackers.com");
+    res.redirect(process.env.CLIENT_URL);
   }
 );
 

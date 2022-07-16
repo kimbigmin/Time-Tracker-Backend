@@ -13,7 +13,7 @@ const { User } = require("./models");
 const app = express();
 
 mongoose.connect(
-  `mongodb+srv://${process.env.MONGODB_ID}:${process.env.MONGODB_PASSWORD}@cluster0.umc0e.mongodb.net/test`,
+  `mongodb+srv://kimmingyu:%40aa19465369a@cluster0.umc0e.mongodb.net/test`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser("secretcode"));
 
 let corsOptions = {
-  origin: "https://time-trackers.com",
+  origin: process.env.CLIENT_URL,
   credentials: true,
 };
 
@@ -69,6 +69,10 @@ app.get("/getuser", (req, res) => {
   res.send(req.user);
 });
 
+app.get("/", (req, res) => {
+  res.send("hi");
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -82,10 +86,6 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-});
-
-app.listen(3000, () => {
-  console.log("Server Started!");
 });
 
 module.exports = app;
