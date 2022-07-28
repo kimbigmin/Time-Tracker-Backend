@@ -66,7 +66,7 @@ app.use("/auth", authRouter);
 app.use("/time", timeRouter);
 
 app.get("/getuser", (req, res) => {
-  res.send(req.user);
+  res.json(req.user);
 });
 
 app.get("/", (req, res) => {
