@@ -44,8 +44,6 @@ app.set("trust proxy", 1);
 app.use(
   session({
     secret: "secretcode",
-    resave: true,
-    saveUninitialized: true,
     cookie: {
       sameSite: "none",
       secure: true,
@@ -71,7 +69,6 @@ app.use("/auth", authRouter);
 app.use("/time", timeRouter);
 
 app.get("/getuser", (req, res) => {
-  console.log(req.user);
   res.json(req.user);
 });
 
