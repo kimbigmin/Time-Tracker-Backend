@@ -69,6 +69,7 @@ app.use("/auth", authRouter);
 app.use("/time", timeRouter);
 
 app.get("/getuser", (req, res) => {
+  console.log(req.user);
   res.json(req.user);
 });
 
