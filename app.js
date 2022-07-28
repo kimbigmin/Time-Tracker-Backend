@@ -69,7 +69,7 @@ app.use("/auth", authRouter);
 app.use("/time", timeRouter);
 
 app.get("/getuser", (req, res) => {
-  res.json(req.user);
+  res.send(req.user);
 });
 
 app.get("/", (req, res) => {
