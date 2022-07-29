@@ -45,7 +45,7 @@ app.use(
   session({
     secret: "secretcode",
     cookie: {
-      sameSite: "lax",
+      sameSite: "none",
       secure: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },
