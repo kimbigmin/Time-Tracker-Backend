@@ -46,7 +46,7 @@ app.use(
     name: "sessionId",
     secret: "secretcode",
     cookie: {
-      sameSite: "lax",
+      sameSite: "none",
       secure: true,
       httpOnly: true,
       domain: "timetracker-server.herokuapp.com",
