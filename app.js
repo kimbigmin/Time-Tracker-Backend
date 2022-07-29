@@ -43,10 +43,12 @@ app.set("trust proxy", 1);
 
 app.use(
   session({
+    name: "sessionId",
     secret: "secretcode",
     cookie: {
-      sameSite: "none",
+      sameSite: "lax",
       secure: true,
+      httpOnly: true,
       domain: "time-trackers.com",
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },
