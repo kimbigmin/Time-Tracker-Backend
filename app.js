@@ -49,7 +49,7 @@ app.use(
       sameSite: "lax",
       secure: true,
       httpOnly: true,
-      domain: "time-trackers.com",
+      domain: "timetracker-server.herokuapp.com",
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },
   })
