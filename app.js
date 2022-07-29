@@ -47,6 +47,7 @@ app.use(
     cookie: {
       sameSite: "none",
       secure: true,
+      domain: "time-trackers.com",
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },
   })
