@@ -7,7 +7,6 @@ const authRouter = require("./routes/auth");
 const timeRouter = require("./routes/time");
 const passport = require("passport");
 const cors = require("cors");
-// const getUserFromJWT = require("./middlewares/get-user-from-jwt");
 const session = require("express-session");
 const { User } = require("./models");
 const app = express();
@@ -55,7 +54,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(getUserFromJWT);
 
 passport.serializeUser((user, done) => {
   return done(null, user._id);
@@ -72,10 +70,6 @@ app.use("/time", timeRouter);
 
 app.get("/getuser", (req, res) => {
   res.json(req.user);
-});
-
-app.get("/", (req, res) => {
-  res.send("hi");
 });
 
 // catch 404 and forward to error handler
